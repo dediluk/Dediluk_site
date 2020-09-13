@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Книги {% endblock %}
+{% block main_page %} class= "nav-item active" {% endblock %}
+
+{% block content %}
+<div class="book_content">
+    <h1>Мои книги</h1>
+    <ul>
+        {% for item in book.all %}
+        <li><h2><a class='index_book_link' href="{% url 'mybooks:detail' item.id%}">{{item.title}} </a></h2></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

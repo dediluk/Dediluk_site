@@ -1,0 +1,136 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a{
+
+}
+
+a:hover{
+    text-decoration: none;
+    color: #8c8c8c;
+}
+
+html,body {
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    width: 1366px;
+    margin: 0 auto;
+    position: relative;
+	height: 100%;
+}
+
+.content {
+	box-sizing: border-box;
+	min-height: 88%;
+	padding-bottom: 90px;
+}
+
+.footer {
+	color: white;
+	background-color: #343a40;
+	background-color: #343a40;
+
+}
+
+ul {
+list-style-type: none;
+}
+
+.index_book_link{
+    color: #212121;
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.index_book_link:hover {
+    color: #8c8c8c
+}
+
+.main_page_article {
+    margin-left: 75px;
+    color: #212121;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.book_content {
+    margin-left:40px;
+    margin-top: 5px;
+}
+
+.main_page_article:hover{
+    color: #8c8c8c;
+    text-decoration: none;
+}
+
+.main_section {
+    margin-left: 90px;
+    margin-top: 25px;
+}
+.books_image_mp {
+    height: 170px;
+    width: 195px;
+}
+
+.books_image_mp:hover {
+    opacity: 0.7;
+}
+
+.book_detail {
+    margin-left:35px;
+}
+
+.book_image {
+    height:300px;
+    width: 200px;
+    float: left;
+}
+
+.book_image_div {
+    height:300px;
+    width: 200px;
+    float:left;
+}
+
+.book_description{
+    margin-left: 215px;
+}
+
+.book_description_description {
+    margin-top: 20px;
+}
+
+.about_image {
+    height: 350px;
+    margin-left: 90px;
+    /* margin-top: 25px; */
+    float:left;
+}
+
+.about_name {
+    margin-top:25px;
+    margin-left: 365px;
+}
+
+.about_study {
+    margin-left: 365px;
+}
+
+.about_social{
+    margin-left: 365px;
+}
+
+
+.social {
+    height: 40px;
+}
+
+.tg {
+    height: 42px;
+}

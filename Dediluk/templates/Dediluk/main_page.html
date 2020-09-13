@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Главная страница {% endblock %}
+
+{% block content %}
+<div class="main_section">
+    <a href="mybooks"><img class='books_image_mp' src="{% static 'images/icons/books.jpg' %}" alt=""></a>
+    <p ><a class="main_page_article" href="mybooks">Книги</a></p><br>
+</div>
+
+{% endblock content %}
