@@ -1,1 +1,1 @@
-web: gunicorn Dediluk.wsgi --log-file -
+web: gunicorn Dediluk.Dediluk.wsgi --log-file -
