@@ -2,6 +2,15 @@
 {% load static %}
 {% block title %} О себе {% endblock %}
 
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'catalog:main_page'%}">Главная </a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'catalog:about' %}">О себе</a></li>
+      </ol>
+    </nav>
+{% endblock %}
+
 {% block content %}
 <div class="about_block">
     <img  class='about_image' src="{% static 'images/about/about.jpg' %}" alt="">
@@ -12,11 +21,11 @@
         О себе:
     </p>
     <div class="about_social">
-        <a href="https://github.com/dediluk" target="_blank"><img src="{% static 'images/icons/git.png' %}" alt="" class="social tg"></a>
-        <a href="https://t.me/Dediluk" target="_blank"><img src="{% static 'images/icons/telegram.png' %}" alt="" class="social tg"></a>
-        <a href="https://vk.com/dilukovich" target="_blank"><img src="{% static 'images/icons/vk.png' %}" alt="" class="social"></a>
-        <a href="mailto:dediluk@gmail.com"><img src="{% static 'images/icons/mail.png' %}" alt="" class="social"></a>
-        <a href="https://www.linkedin.com/in/denis-ilyukovich-a02528182" target="_blank"><img src="{% static 'images/icons/linkedin.png' %}" alt="" class="social"></a>
+        <a class="social_image" href="https://github.com/dediluk" target="_blank"><img src="{% static 'images/icons/git.png' %}" alt="" class="social tg"></a>
+        <a class="social_image" href="https://t.me/Dediluk" target="_blank"><img src="{% static 'images/icons/telegram.png' %}" alt="" class="social tg"></a>
+        <a class="social_image" href="https://vk.com/dilukovich" target="_blank"><img src="{% static 'images/icons/vk.png' %}" alt="" class="social"></a>
+        <a class="social_image" href="mailto:dediluk@gmail.com"><img src="{% static 'images/icons/mail.png' %}" alt="" class="social"></a>
+        <a class="social_image" href="https://www.linkedin.com/in/denis-ilyukovich-a02528182" target="_blank"><img src="{% static 'images/icons/linkedin.png' %}" alt="" class="social linked_in"></a>
     </div>
 </div>
 {% endblock content %}

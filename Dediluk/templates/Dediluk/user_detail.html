@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Профиль {% endblock %}
+
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'catalog:main_page'%}">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a
+                href="{% url 'catalog:about_user' userdetail.get_username%}">{{userdetail.get_username}}</a>
+        </li>
+    </ol>
+</nav>
+
+<!--    <a href="{% url 'catalog:main_page'%}">Главная >></a>-->
+<!--    <a href="{% url 'catalog:about_user' user.id%}">{{user.get_username}}</a>-->
+{% endblock %}
+
+{% block content %}
+
+
+<div class="user_information">
+
+    {% if userdetail.userprofile.avatar.url %}
+    <img class='user_avatar' src="{{userdetail.userprofile.avatar.url}}" alt="">
+    {% else %}
+    <img class='user_avatar' src="{% static '/images/icons/product-4.jpg' %}" alt="">
+    {% endif %}
+
+    <div class="user_data">
+        <h3 class="username">Ник: {{userdetail.get_username}}</h3>
+        <h3 class="user_firstname">Имя: {{userdetail.first_name}}</h3>
+        <h3 class="user_firstname">Фамилия: {{userdetail.last_name}}</h3>
+        <h3 class="user_firstname">Почта: {{userdetail.email}}</h3>
+        <h3 class="user_firstname">Группа: {{userdetail.last_login}}</h3>
+        {{instance.name}}
+        {% if request.user.get_username == userdetail.get_username%}
+        <a href="{% url 'catalog:change_password' user.get_username %}" class="change_password">
+            <button type="button" class="btn btn-danger delete_book_button">Изменить пароль</button>
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+
+
+{% endblock content %}

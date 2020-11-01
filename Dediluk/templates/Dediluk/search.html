@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Поиск {% endblock %}
+
+{% block breadcrumbs %}
+
+{% endblock %}
+
+{% block content %}
+{% if object_list%}
+<h3 class="search_result">Результаты поиска:</h3><br>
+
+{% for book in object_list %}
+<div class="search_div">
+    <div class="search_book_image_div">
+        <a href="{% url 'mybooks:book_detail' book.id%}">
+            <img class='search_book_image' src="{{book.image.url}}" alt="">
+        </a>
+    </div>
+    <a class='search_book_title' href="{% url 'mybooks:book_detail' book.id%}">
+        <h3 class="search_result">{{book.title}}</h3>
+    </a>
+</div>
+{% endfor %}
+{% else %}
+Ничего не найдено
+{% endif %}
+{% endblock content %}

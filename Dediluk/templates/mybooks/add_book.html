@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Добавление книги {% endblock %}
+
+
+{% block breadcrumbs %}
+
+{% endblock breadcrumbs%}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="book_add_div">
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+    {{form.as_p}}
+    <p class="book_add_button"><button type="submit" class="btn btn-primary" value="login">Добавить</button></p>
+</form>
+</div>
+{% else %}
+<p class='login_error'>Пожалуйста, зайдите в аккаунт, чтобы продолжить</p>
+<p class="logged_out_login_link"><a class="logged_out_login_link" href="{% url 'login' %}">
+    <button type="button" class="btn btn-success">Войти</button>
+</a></p>
+
+
+{% endif %}
+
+
+{% endblock content %}

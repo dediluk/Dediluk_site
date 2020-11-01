@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %} {{author.name}} {% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'catalog:main_page'%}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'mybooks:authors_list' %}">Авторы</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{author.name}}</li>
+      </ol>
+    </nav>
+
+{% endblock %}
+
+
+{% if user.is_superuser%}
+            <p class="delete_book"><a href="{% url 'mybooks:delete_book' book.id%}">
+                <button type="button" class="btn btn-danger delete_book_button" onclick="return confirm('Вы уверены?');">Удалить</button></a></p>
+        {% endif %}
+
+
+
+{% block content %}
+<h1 class="author_name">{{author.name}}</h1>
+<div class="author_image_div">
+    <img class='author_image' src="{{author.image.url}}" alt="">
+    {% if user.is_superuser%}
+        <p class="delete_book"><a href="{% url 'mybooks:delete_author' author.id %}">
+            <button type="button" class="btn btn-danger delete_book_button" onclick="return confirm('Вы уверены?');">Удалить</button></a>
+        </p>
+    {% endif %}
+</div>
+
+<div class="author_description">
+
+    {%for book in books %}
+    <a href="{% url 'mybooks:book_detail' book.id %}"><h3>{{book.title}}</h3></a>
+    {% endfor %}
+</div>
+
+
+
+
+
+{% endblock content %}

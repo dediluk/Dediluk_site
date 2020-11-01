@@ -2,10 +2,16 @@
 {% load static %}
 {% block title %} Главная страница {% endblock %}
 
+{% block breadcrumbs %}
+
+{% endblock %}
+
 {% block content %}
 <div class="main_section">
-    <a href="mybooks"><img class='books_image_mp' src="{% static 'images/icons/books.jpg' %}" alt=""></a>
-    <p ><a class="main_page_article" href="mybooks">Книги</a></p><br>
+    <div class="main_some_section">
+        <div class="book_image_mp_div"><a href="mybooks"><img class='books_image_mp' src="{% static 'images/icons/books.jpg' %}" alt=""></a></div>
+        <p class="main_page_article"><a class="main_page_article" href="mybooks">Книги</a></p><br>
+    </div>
 </div>
 
 {% endblock content %}

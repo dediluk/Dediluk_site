@@ -1,19 +1,37 @@
 {% extends "base.html" %}
 {% block title %} {{book.title}} {% endblock %}
+
+{% block breadcrumbs %}
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'catalog:main_page'%}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'mybooks:index' %}">Книги</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'mybooks:book_detail' book.id%}">{{book.title}}</a></li>
+      </ol>
+    </nav>
+{% endblock %}
+
 {% block content %}
+
 
 
 <div class="book_detail">
     <h1>{{ book.title }}</h1>
     <div class="book_image_div">
         <img class='book_image' src="{{ book.image.url }}">
+        {% if user.is_superuser%}
+            <p class="delete_book"><a href="{% url 'mybooks:delete_book' book.id%}">
+                <button type="button" class="btn btn-danger delete_book_button" onclick="return confirm('Вы уверены?');">Удалить</button></a></p>
+        {% endif %}
     </div>
     <div class="book_description">
         {% for author in book.author_name.all %}
-        <h3 class="author_name">{{ author.name }}</h3>
+
+        <a href="{% url 'mybooks:author_detail' author.id %}"><h3 class="author_name">{{ author.name }}</h3></a>
         {% endfor %}
 
         <h3 class="book_description_description">{{ book.description }}</h3>
     </div>
+
 </div>
 {% endblock content %}

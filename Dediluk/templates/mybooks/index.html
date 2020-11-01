@@ -3,13 +3,73 @@
 {% block title %} Книги {% endblock %}
 {% block main_page %} class= "nav-item active" {% endblock %}
 
+{% block breadcrumbs %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'catalog:main_page'%}">Главная</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'mybooks:index' %}">Книги</a></li>
+    </ol>
+</nav>
+<!--    <a href="{% url 'catalog:main_page'%}">Главная >></a>-->
+<!--    <a href="{% url 'mybooks:index' %}">Книги >></a>-->
+{% endblock %}
+
+
 {% block content %}
 <div class="book_content">
-    <h1>Мои книги</h1>
-    <ul>
-        {% for item in book.all %}
-        <li><h2><a class='index_book_link' href="{% url 'mybooks:detail' item.id%}">{{item.title}} </a></h2></li>
+    <div class="header">
+        <h1 class="mybooks_h2 ">Мои книги</h1>
+        <a href="{% url 'mybooks:authors_list'%}" class="authors_list_link"><h1 class="mybooks_h2 not_active_h2">
+            Авторы</h1></a>
+        {% if user.is_authenticated %}
+        <a class='add_book_header' href="{% url  'mybooks:add_book_page' %}" class="add_book">
+            <button type="button" class="btn btn-success">Добавить книгу</button>
+        </a>
+        {% endif %}
+    </div>
+    <div class="search_result">
+        {% for item in page_obj %}
+        <div class="search_div">
+            <div class="search_book_image_div">
+                <a href="{% url 'mybooks:book_detail' item.id%}">
+                    <img class='search_book_image' src="{{item.image.url}}" alt="">
+                </a>
+            </div>
+            <a class='search_book_title' href="{% url 'mybooks:book_detail' item.id%}">
+                <h4>{{item.title}}</h4>
+            </a>
+        </div>
+
+
         {% endfor %}
-    </ul>
+    </div>
 </div>
+
+<div class="clr"></div>
+
+<div class="paginator">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Назад </a>
+            </li>
+            {% endif %}
+            {% for i in page_obj.paginator.page_range %}
+            {% if page_obj.number == i %}
+            <li class="page-item active "><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+            {% endif %}
+            {% endfor%}
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Вперед</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+</div>
+
 {% endblock content %}

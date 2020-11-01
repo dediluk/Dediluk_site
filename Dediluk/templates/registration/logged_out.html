@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %} Вход {% endblock %}
+
+{% block breadcrumbs %}
+
+{% endblock %}
+
+{% block content %}
+
+<p class="logged_out_p">Вы вышли из аккаунта.</p>
+
+<p class="logged_out_login_link"><a class="logged_out_login_link" href="{% url 'login' %}"><button type="button" class="btn btn-success">Войти</button></a></p>
+
+
+{% endblock content %}
