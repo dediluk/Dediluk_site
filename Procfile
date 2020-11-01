@@ -1,0 +1,1 @@
+web: gunicorn Dediluk.wsgi --log-file -
